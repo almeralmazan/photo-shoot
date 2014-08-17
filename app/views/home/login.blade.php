@@ -12,7 +12,7 @@
                     {{ Form::open(['url' => 'admin/login', 'id' => 'login-form', 'role' => 'form']) }}
                     <fieldset>
                         <div class="form-group">
-                            {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email', 'required', 'autofocus']) }}
+                            {{ Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required', 'autofocus']) }}
                         </div>
                         <div class="form-group">
                             {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password', 'required' => 'required']) }}
