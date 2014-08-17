@@ -9,10 +9,22 @@ class HomeController extends BaseController {
         return View::make('home.index', compact('title', 'services'));
     }
 
-    public function services()
+    public function event()
     {
-        $title = 'Services Page';
-        return View::make('home.services', compact('title'));
+        $title = 'Event Package Page';
+        return View::make('home.event', compact('title'));
+    }
+
+    public function photoShoot()
+    {
+        $title = 'Photo Shoot Page';
+        return View::make('home.photo-shoot', compact('title'));
+    }
+
+    public function product()
+    {
+        $title = 'Product Page';
+        return View::make('home.product', compact('title'));
     }
 
     public function galleries()

@@ -1,4 +1,2 @@
-<footer>
-    <p>&copy;2014 Printshoppe Photography</p>
+<footer class="navbar navbar-inverse navbar-static-bottom">
 </footer>
-</div>

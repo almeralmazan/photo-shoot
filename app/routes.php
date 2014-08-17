@@ -4,7 +4,9 @@
 Route::get('/', 'HomeController@index');
 Route::get('login', 'HomeController@login');
 Route::post('login', 'AdminController@verifyLogin');
-Route::get('services', 'HomeController@services');
+Route::get('event', 'HomeController@event');
+Route::get('photo-shoot', 'HomeController@photoShoot');
+Route::get('products', 'HomeController@product');
 Route::get('galleries', 'HomeController@galleries');
 Route::get('about-us', 'HomeController@aboutUs');
 Route::get('contact', 'HomeController@contact');
