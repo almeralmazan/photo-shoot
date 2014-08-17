@@ -9,7 +9,7 @@
                     <h3 class="panel-title">Please sign in</h3>
                 </div>
                 <div class="panel-body">
-                    {{ Form::open(['url' => 'admin/login', 'id' => 'login-form', 'role' => 'form']) }}
+                    {{ Form::open(['url' => 'login', 'id' => 'login-form', 'role' => 'form']) }}
                     <fieldset>
                         <div class="form-group">
                             {{ Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required', 'autofocus']) }}
