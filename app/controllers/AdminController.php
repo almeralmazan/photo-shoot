@@ -4,7 +4,7 @@ class AdminController extends BaseController {
 
     public function announcement()
     {
-        $title = 'Admin Home Page';
+        $title = 'Announcement Page';
         return View::make('admin.announcement', compact('title'));
     }
 
@@ -31,4 +31,5 @@ class AdminController extends BaseController {
         $title = 'Gallery Page';
         return View::make('admin.gallery', compact('title'));
     }
+
 }
