@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
-    {{ HTML::style('css/bootstrap.css') }}
+    {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/lightbox.css') }}
-    {{ HTML::style('css/styles.css') }}
+    {{ HTML::style('css/style.css') }}
 </head>
 <body id="public">
 
-    @include('layouts.partials.nav')
+    @if ( ! Request::is('login'))
+        @include('layouts.partials.nav')
+    @endif
 
     @yield('content')
 
-    @include('layouts.partials.footer')
+    @if ( ! Request::is('login'))
+        @include('layouts.partials.footer')
+    @endif
 
 {{ HTML::script('js/jquery-1.10.2.min.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
