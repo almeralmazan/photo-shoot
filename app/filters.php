@@ -36,7 +36,7 @@ Route::filter('admin', function()
 {
     if (Auth::guest())
     {
-        return Redirect::to('admin/login');
+        return Redirect::to('login');
     }
 });
 
