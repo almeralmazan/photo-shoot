@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/lightbox.css') }}
     {{ HTML::style('css/style.css') }}
 </head>
 <body>
