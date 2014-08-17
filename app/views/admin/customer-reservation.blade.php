@@ -20,7 +20,7 @@
                 <label for="customer-name">Package to reserve: </label> {{ $package->name }}
             </p>
             <p>
-                <label for="customer-name">Reservation Date: </label> {{ $customer->date }}
+                <label for="customer-name">Reservation Date: </label> {{ date('F j, Y', strtotime($customer->date)) }}
             </p>
             <p>
                 <label for="customer-name">Message: </label> {{ $customer->message }}
