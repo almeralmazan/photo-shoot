@@ -11,7 +11,7 @@
     {{ HTML::style('css/font-awesome.css') }}
     {{ HTML::style('css/styles.css') }}
 </head>
-<body>
+<body id="public">
 
     @include('layouts.partials.nav')
 

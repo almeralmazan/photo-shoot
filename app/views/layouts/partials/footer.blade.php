@@ -1,4 +1,4 @@
 <footer>
-    <p>COPYRIGHT&copy;2014 PRINTSHOPPE PHOTOGRAPHY</p>
+    <p>&copy;2014 Printshoppe Photography</p>
 </footer>
 </div>
