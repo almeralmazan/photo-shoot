@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Raleway';
-  src: url('Raleway-Regular.eot');
+  src: url('../fonts/Raleway-Regular.eot');
 }
 
 body{
@@ -108,7 +108,7 @@ nav ul li a{
 	transition: background .5s;
 	-webkit-transition: background .5s;
 	-moz-transition: background .5s;
-	-0-transition: background .5s;
+	-o-transition: background .5s;
 }
 
 nav ul li a:hover{
