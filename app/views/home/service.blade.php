@@ -12,7 +12,7 @@
                 <a href="{{ URL::to('reserve', [$package->id]) }}" class="btn btn-primary">Reserve</a>
             </div>
             <div class="col-md-4 img-container">
-                <img src="http://placehold.it/250x250" alt="" class="center-block">
+                <img src="{{ URL::to('images/uploads/services/packages', [$package->image]) }}" alt="" class="center-block">
             </div>
             @endforeach
         </div>
