@@ -1,10 +1,10 @@
 <?php
 
-class ReservationStatusTableSeeder extends Seeder {
+class StatusTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('reservation_status')->delete();
+        DB::table('status')->delete();
 
         $statuses = [
             [ 'name'  => 'Pending' ],
@@ -16,7 +16,7 @@ class ReservationStatusTableSeeder extends Seeder {
 
         foreach ($statuses as $status)
         {
-            ReservationStatus::create($status);
+            Status::create($status);
         }
     }
 }

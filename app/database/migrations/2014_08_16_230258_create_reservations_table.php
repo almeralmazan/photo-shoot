@@ -21,7 +21,7 @@ class CreateReservationsTable extends Migration {
             $table->integer('package_id');
             $table->date('date')->default('0000-00-00');
             $table->text('message');
-            $table->string('status');
+            $table->integer('status_id');
             $table->timestamps();
         });
 	}

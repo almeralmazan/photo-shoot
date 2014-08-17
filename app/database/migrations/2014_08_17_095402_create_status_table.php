@@ -12,7 +12,7 @@ class CreateStatusTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('reservation_status', function($table)
+        Schema::create('status', function($table)
         {
             $table->increments('id');
             $table->string('name', 50);
@@ -27,7 +27,7 @@ class CreateStatusTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('reservation_status');
+        Schema::drop('status');
 	}
 
 }

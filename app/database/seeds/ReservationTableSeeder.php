@@ -14,7 +14,7 @@ class ReservationTableSeeder extends Seeder {
                 'package_id'        =>  1,
                 'date'              =>  '2014-08-09',
                 'message'           =>  'A simple message',
-                'status'            =>  'Pending'
+                'status_id'         =>  1
             ],
             [
                 'name'              =>  'Foo Bar',
@@ -23,7 +23,7 @@ class ReservationTableSeeder extends Seeder {
                 'package_id'        =>  2,
                 'date'              =>  '2014-08-19',
                 'message'           =>  'A simple message that is too much!',
-                'status'            =>  'Reserved'
+                'status_id'         =>  2
             ],
             [
                 'name'              =>  'Bar Baz',
@@ -32,7 +32,7 @@ class ReservationTableSeeder extends Seeder {
                 'package_id'        =>  3,
                 'date'              =>  '2014-08-01',
                 'message'           =>  'Lorem ipsum dolor',
-                'status'            =>  'Deposited Confirmed'
+                'status_id'         =>  4
             ]
         ];
 

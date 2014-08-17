@@ -27,9 +27,17 @@
             </p>
             <p>
                 <label for="customer-name">Status: </label>
-                {{ Form::select('status', $customer->lists('status', 'id'), $customer->id, ['class' => 'form-control']) }}
+                {{ Form::select('status',
+                    [
+                        '1' => 'Pending',
+                        '2' => 'Reserved',
+                        '3' => 'Cancelled',
+                        '4' => 'Deposited-Confirmed',
+                        '5' => 'Deposited-Waiting for confirmation'
+                    ],
+                    $customer->status_id, ['class' => 'form-control'])
+                }}
             </p>
-
             {{ Form::submit('Update', ['class' => 'btn btn-info']) }}
 
         {{ Form::close() }}

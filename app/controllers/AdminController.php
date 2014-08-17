@@ -19,15 +19,11 @@ class AdminController extends BaseController {
 
     public function updateReservation($customerId)
     {
-
-        switch (Input::get('status'))
-        {
-            case 1:
-//                $status = ''
-        }
         $customer = Reservation::find($customerId);
-        $customer->status = Input::get('status');
+        $customer->status_id = Input::get('status');
         $customer->save();
+
+        return Redirect::back();
     }
 
     public function announcement()
