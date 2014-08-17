@@ -32,6 +32,19 @@ class AdminController extends BaseController {
         return View::make('admin.gallery', compact('title'));
     }
 
+    public function verifyLogin()
+    {
+        // Using Auth::attempt, 'password' is automatically Hash::make()
+        $credentials = Auth::attempt([
+            'username' => Input::get('username'),
+            'password' => Input::get('password')
+        ]);
+
+        if ($credentials) return Redirect::to('admin/announcement');
+
+        return Redirect::back()->withMessage('Sorry, only the administrator allowed here');
+    }
+
     public function logout()
     {
         Auth::logout();
