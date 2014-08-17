@@ -102,9 +102,9 @@ $( "#submit" ).click(function( event ) {
   });
 });
 
-$(function() {
-    $('.file-input').imgPreview();
-});
+//$(function() {
+//    $('.file-input').imgPreview();
+//});
 
 
 $('#go_check').click(function () {
