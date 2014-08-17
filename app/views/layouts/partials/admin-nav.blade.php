@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -27,7 +27,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <li><a href="{{ URL::to('admin/logout') }}">Logout</a></li>
+                    <li>
+                        <a href="{{ URL::to('admin/logout') }}">
+                            Logout <span class="glyphicon glyphicon-off"></span>
+                        </a>
+                </li>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
