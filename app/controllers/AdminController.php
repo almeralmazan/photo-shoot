@@ -29,7 +29,18 @@ class AdminController extends BaseController {
     public function announcement()
     {
         $title = 'Announcement Page';
-        return View::make('admin.announcement', compact('title'));
+        $announcement = Announcement::find(1);
+        return View::make('admin.announcement', compact('title', 'announcement'));
+    }
+
+    public function updateAnnouncement($announcementId)
+    {
+        $announcement = Announcement::find($announcementId);
+        $announcement->title = Input::get('title');
+        $announcement->content = Input::get('content');
+        $announcement->save();
+
+        return Redirect::back();
     }
 
     public function serviceEvent()
