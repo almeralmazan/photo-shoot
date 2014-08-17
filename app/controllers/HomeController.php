@@ -5,7 +5,8 @@ class HomeController extends BaseController {
     public function index()
     {
         $title = 'Home Page';
-        return View::make('home.index', compact('title'));
+        $services = Service::all();
+        return View::make('home.index', compact('title', 'services'));
     }
 
     public function services()
@@ -32,4 +33,9 @@ class HomeController extends BaseController {
         return View::make('home.contact', compact('title'));
     }
 
+    public function login()
+    {
+        $title = 'Login Page';
+        return View::make('home.login', compact('title'));
+    }
 }
