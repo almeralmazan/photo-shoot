@@ -27,7 +27,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="{{ URL::to('admin/logout') }}">Logout</a></li>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
