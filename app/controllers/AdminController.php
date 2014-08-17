@@ -64,8 +64,55 @@ class AdminController extends BaseController {
     public function gallery()
     {
         $title = 'Gallery Page';
-        return View::make('admin.gallery', compact('title'));
+        $galleries = Gallery::all();
+        return View::make('admin.gallery', compact('title', 'galleries'));
     }
+
+    public function galleryPage($galleryId)
+    {
+        $title = 'Gallery Page';
+        $galleryImages = DB::table('gallery_images')
+                            ->select('id', 'image')
+                            ->where('gallery_id', $galleryId)
+                            ->get();
+
+        $gallery_id = $galleryId;
+
+        return View::make('admin.gallery-page', compact('title', 'galleryImages', 'gallery_id'));
+    }
+
+    public function addGallery()
+    {
+        $gallery = new Gallery;
+        $gallery->name = Input::get('gallery_name');
+        $gallery->save();
+
+        return Redirect::back();
+    }
+
+    public function addGalleryImage()
+    {
+        $image = Input::file('image_name');
+        $filename = $image->getClientOriginalName();
+
+        $galleryImage = new GalleryImage;
+        $galleryImage->gallery_id = Input::get('gallery_id');
+        $galleryImage->image = $filename;
+        $galleryImage->save();
+
+        $destinationPath = public_path() . '/images/uploads/galleries';
+        $image->move($destinationPath, $filename);
+
+        return Redirect::back();
+    }
+
+    public function deleteGallery($galleryId)
+    {
+        Gallery::find($galleryId)->delete();
+
+        return Redirect::back();
+    }
+
 
     public function verifyLogin()
     {

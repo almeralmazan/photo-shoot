@@ -16,11 +16,19 @@ Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
     Route::get('reservation', 'AdminController@reservation');
     Route::get('reservation/{reservationId}', 'AdminController@reserveId');
     Route::post('update/reservation/{customerId}', 'AdminController@updateReservation');
+
     Route::get('announcement', 'AdminController@announcement');
     Route::post('update/announcement/{announcementId}', 'AdminController@updateAnnouncement');
+
     Route::get('event', 'AdminController@serviceEvent');
     Route::get('photo-shoot', 'AdminController@servicePhotoShoot');
     Route::get('products', 'AdminController@serviceProduct');
+
     Route::get('gallery', 'AdminController@gallery');
+    Route::get('gallery/{galleryId}', 'AdminController@galleryPage');
+    Route::post('add/gallery-category', 'AdminController@addGallery');
+    Route::post('add/gallery-image', 'AdminController@addGalleryImage');
+    Route::get('delete/gallery/{galleryId}', 'AdminController@deleteGallery');
+
     Route::get('logout', 'AdminController@logout');
 });
