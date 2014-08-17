@@ -14,6 +14,6 @@ Route::group(['prefix' => 'admin'], function()
     Route::get('announcement', 'AdminController@announcement');
     Route::get('event', 'AdminController@serviceEvent');
     Route::get('photo-shoot', 'AdminController@servicePhotoShoot');
-    Route::get('product', 'AdminController@serviceProduct');
+    Route::get('products', 'AdminController@serviceProduct');
     Route::get('gallery', 'AdminController@gallery');
 });
