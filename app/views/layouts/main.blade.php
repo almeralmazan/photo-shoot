@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
-    {{ HTML::style('css/normalize.css') }}
     {{ HTML::style('css/bootstrap.css') }}
-    {{ HTML::style('css/animate.css') }}
-    {{ HTML::style('css/toastr.css') }}
     {{ HTML::style('css/lightbox.css') }}
-    {{ HTML::style('css/font-awesome.css') }}
     {{ HTML::style('css/styles.css') }}
 </head>
 <body id="public">
