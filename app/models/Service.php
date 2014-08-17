@@ -2,5 +2,5 @@
 
 class Service extends Eloquent {
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'image'];
 }

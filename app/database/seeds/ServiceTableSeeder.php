@@ -13,13 +13,16 @@ class ServiceTableSeeder extends Seeder {
 
         $services = [
             [
-                'name'  =>  'Event Package'
+                'name'      =>  'Event Package',
+                'image'     =>  'event.jpg'
             ],
             [
-                'name'  =>  'Photo Shoot Package'
+                'name'      =>  'Photo Shoot Package',
+                'image'     =>  'photo-shoot.jpg'
             ],
             [
-                'name'  =>  'Products Package'
+                'name'      =>  'Products Package',
+                'image'     =>  'products.jpg'
             ]
         ];
 

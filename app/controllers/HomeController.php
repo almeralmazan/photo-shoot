@@ -9,16 +9,21 @@ class HomeController extends BaseController {
         return View::make('home.index', compact('title', 'services'));
     }
 
-    public function event()
+    public function service($serviceId)
     {
-        $title = 'Event Package Page';
-        return View::make('home.event', compact('title'));
+        $packageName = DB::table('services')->select('name')->where('id', $serviceId)->first();
+        $title = $packageName->name;
+        $packages = DB::table('service_packages')
+                                ->where('service_id', $serviceId)
+                                ->get();
+        return View::make('home.service', compact('title', 'packages'));
     }
 
-    public function photoShoot()
+    public function reserve($servicePackageId)
     {
-        $title = 'Photo Shoot Page';
-        return View::make('home.photo-shoot', compact('title'));
+        $title = 'Packages';
+        $package = ServicePackage::find($servicePackageId);
+        return View::make('home.reserve', compact('title', 'package'));
     }
 
     public function product()

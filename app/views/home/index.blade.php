@@ -44,33 +44,17 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($services as $service)
                 <div class="col-md-4">
                     <div class="thumbnails center-block">
-                        <img src="http://placehold.it/250x250" alt="">
+                        <img src="{{ URL::to('images/uploads/services', [$service->image]) }}" alt="">
                         <div class="caption">
-                            <h3>Event Package</h3>
-                            <a href="{{ URL::to('event') }}" class="btn btn-success">View</a>
+                            <h3>{{ $service->name }}</h3>
+                            <a href="{{ URL::to('service', [$service->id]) }}" class="btn btn-success">View</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="thumbnails center-block">
-                        <img src="http://placehold.it/250x250" alt="">
-                        <div class="caption">
-                            <h3>Photo Shoot</h3>
-                            <a href="{{ URL::to('photo-shoot') }}" class="btn btn-danger">View</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnails center-block">
-                        <img src="http://placehold.it/250x250" alt="">
-                        <div class="caption">
-                            <h3>Products</h3>
-                            <a href="{{ URL::to('products') }}" class="btn btn-info">View</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
