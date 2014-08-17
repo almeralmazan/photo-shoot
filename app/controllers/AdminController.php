@@ -2,6 +2,13 @@
 
 class AdminController extends BaseController {
 
+    public function reservation()
+    {
+        $title = 'Reservation Page';
+        $reservations = Reservation::all();
+        return View::make('admin.reservation', compact('title', 'reservations'));
+    }
+
     public function announcement()
     {
         $title = 'Announcement Page';
