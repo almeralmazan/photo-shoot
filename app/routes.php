@@ -13,6 +13,7 @@ Route::get('contact', 'HomeController@contact');
 
 Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
 {
+    Route::get('reservation', 'AdminController@reservation');
     Route::get('announcement', 'AdminController@announcement');
     Route::get('event', 'AdminController@serviceEvent');
     Route::get('photo-shoot', 'AdminController@servicePhotoShoot');
