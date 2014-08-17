@@ -9,6 +9,27 @@ class AdminController extends BaseController {
         return View::make('admin.reservation', compact('title', 'reservations'));
     }
 
+    public function reserveId($reservationId)
+    {
+        $title = 'Reservation Page';
+        $customer = Reservation::find($reservationId);
+        $package = ServicePackage::find($customer->package_id);
+        return View::make('admin.customer-reservation', compact('title', 'customer', 'package'));
+    }
+
+    public function updateReservation($customerId)
+    {
+
+        switch (Input::get('status'))
+        {
+            case 1:
+//                $status = ''
+        }
+        $customer = Reservation::find($customerId);
+        $customer->status = Input::get('status');
+        $customer->save();
+    }
+
     public function announcement()
     {
         $title = 'Announcement Page';

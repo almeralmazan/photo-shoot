@@ -14,6 +14,8 @@ Route::get('contact', 'HomeController@contact');
 Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
 {
     Route::get('reservation', 'AdminController@reservation');
+    Route::get('reservation/{reservationId}', 'AdminController@reserveId');
+    Route::post('update/reservation/{customerId}', 'AdminController@updateReservation');
     Route::get('announcement', 'AdminController@announcement');
     Route::get('event', 'AdminController@serviceEvent');
     Route::get('photo-shoot', 'AdminController@servicePhotoShoot');
