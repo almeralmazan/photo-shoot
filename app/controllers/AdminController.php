@@ -32,4 +32,9 @@ class AdminController extends BaseController {
         return View::make('admin.gallery', compact('title'));
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return Redirect::to('/');
+    }
 }
