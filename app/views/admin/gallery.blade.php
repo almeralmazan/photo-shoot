@@ -10,7 +10,7 @@
                 {{ Form::open(['url' => 'admin/add/gallery-category', 'class' => 'form-inline']) }}
 
                 <div class="form-group">
-                    {{ Form::text('gallery_name', null, ['class' => 'form-control', 'placeholder' => 'Gallery Name']) }}
+                    {{ Form::text('gallery_name', null, ['class' => 'form-control', 'placeholder' => 'Gallery Name', 'required' => true]) }}
 
                     <button type="submit" class="form-control btn btn-success"/>
                         <span class="glyphicon glyphicon-plus"></span> Add Gallery </button>
