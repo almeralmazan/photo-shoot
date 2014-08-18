@@ -41,7 +41,8 @@ class HomeController extends BaseController {
     public function aboutUs()
     {
         $title = 'About Us Page';
-        return View::make('home.about-us', compact('title'));
+        $announcement = Announcement::find(1);
+        return View::make('home.about-us', compact('title', 'announcement'));
     }
 
     public function contact()
