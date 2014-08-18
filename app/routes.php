@@ -6,6 +6,7 @@ Route::get('login', 'HomeController@login');
 Route::post('login', 'AdminController@verifyLogin');
 Route::get('service/{serviceId}', 'HomeController@service');
 Route::get('reserve/{serviePackageId}', 'HomeController@reserve');
+Route::post('reserve-package', 'HomeController@reservePackage');
 Route::get('galleries', 'HomeController@galleries');
 Route::get('about-us', 'HomeController@aboutUs');
 Route::get('contact', 'HomeController@contact');

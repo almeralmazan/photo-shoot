@@ -26,6 +26,30 @@ class HomeController extends BaseController {
         return View::make('home.reserve', compact('title', 'package'));
     }
 
+    public function reservePackage()
+    {
+        $packageId      = Input::get('package_id');
+        $name           = Input::get('name');
+        $email          = Input::get('email');
+        $contactNumber  = Input::get('contact_number');
+        $date           = Input::get('date');
+        $message        = Input::get('message');
+        $statusId       = 1;
+
+        Reservation::create([
+            'name'              =>  $name,
+            'email'             =>  $email,
+            'contact_number'    =>  $contactNumber,
+            'package_id'        =>  $packageId,
+            'date'              =>  $date,
+            'message'           =>  $message,
+            'status_id'         =>  $statusId
+        ]);
+
+        return Redirect::back();
+
+    }
+
     public function product()
     {
         $title = 'Product Page';
