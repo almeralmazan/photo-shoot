@@ -43,6 +43,21 @@ class AdminController extends BaseController {
         return Redirect::back();
     }
 
+    public function services()
+    {
+        $title = 'Services';
+        $services = Service::all();
+        return View::make('admin.services.index', compact('title', 'services'));
+    }
+
+    public function addservice()
+    {
+        $newService = new Service;
+        $newService->name = Input::get('service_name');
+        $newService->image = Input::file('service_image');
+        $newService->save();
+    }
+
     public function serviceEvent()
     {
         $title = 'Event Package';
