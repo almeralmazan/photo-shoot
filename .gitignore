@@ -9,3 +9,4 @@ composer.lock
 Thumbs.db
 public/images/*
 public/css/*
+_ide_helper.php
