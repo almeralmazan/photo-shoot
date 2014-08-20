@@ -58,10 +58,14 @@ class AdminController extends BaseController {
         $newService->save();
     }
 
-    public function serviceEvent()
+    public function servicePackage($serviceId)
     {
-        $title = 'Event Package';
-        return View::make('admin.services.event', compact('title'));
+        $service = Service::find($serviceId);
+        $title = $service->name;
+
+        $servicePackages = ServicePackage::where('service_id', $service->id)->get();
+
+        return View::make('admin.services.service-package', compact('title', 'servicePackages'));
     }
 
     public function servicePhotoShoot()

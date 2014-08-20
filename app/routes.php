@@ -22,6 +22,7 @@ Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
 
     // Services
     Route::get('services', 'AdminController@services');
+    Route::get('service-package/{packageId}', 'AdminController@servicePackage');
     Route::post('add/service', 'AdminController@addService');
     Route::get('event', 'AdminController@serviceEvent');
     Route::get('photo-shoot', 'AdminController@servicePhotoShoot');
