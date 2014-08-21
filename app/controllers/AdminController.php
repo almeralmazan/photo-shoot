@@ -4,7 +4,13 @@ class AdminController extends BaseController {
 
     public function index()
     {
-        $title = 'Admin Page Page';
+        $title = 'Admin Page';
+        return View::make('admin.index', compact('title'));
+    }
+
+    public function announcement()
+    {
+        $title = 'Announcement Page';
         $announcement = Announcement::find(1);
         return View::make('admin.announcement', compact('title', 'announcement'));
     }
@@ -147,7 +153,7 @@ class AdminController extends BaseController {
             'password' => Input::get('password')
         ]);
 
-        if ($credentials) return Redirect::to('admin/announcement');
+        if ($credentials) return Redirect::to('admin');
 
         return Redirect::back()->with('message', 'Sorry, only the administrator allowed here');
     }

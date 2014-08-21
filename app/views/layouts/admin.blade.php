@@ -33,11 +33,25 @@
 </head>
 <body>
 
-    @if ( ! Request::is('login') )
-        @include('layouts.partials.admin-nav')
-    @endif
+    <div id="wrapper">
 
-    @yield('content')
+        @if ( ! Request::is('login') )
+            @include('layouts.partials.admin-nav')
+
+            <!-- Page Content -->
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+        @else
+            <!-- If login page -->
+            @yield('content')
+        @endif
+
+    </div>
 
 
 <!-- jQuery Version 1.11.0 -->
