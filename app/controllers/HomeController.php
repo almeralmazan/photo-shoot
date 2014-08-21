@@ -75,9 +75,4 @@ class HomeController extends BaseController {
         return View::make('home.contact', compact('title'));
     }
 
-    public function login()
-    {
-        $title = 'Login Page';
-        return View::make('home.login', compact('title'));
-    }
 }

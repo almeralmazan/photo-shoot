@@ -2,6 +2,13 @@
 
 class AdminController extends BaseController {
 
+    public function index()
+    {
+        $title = 'Admin Page Page';
+        $announcement = Announcement::find(1);
+        return View::make('admin.announcement', compact('title', 'announcement'));
+    }
+
     public function reservation()
     {
         $title = 'Reservation Page';
@@ -26,13 +33,6 @@ class AdminController extends BaseController {
             ]);
 
         return Redirect::back();
-    }
-
-    public function announcement()
-    {
-        $title = 'Announcement Page';
-        $announcement = Announcement::find(1);
-        return View::make('admin.announcement', compact('title', 'announcement'));
     }
 
     public function updateAnnouncement($announcementId)
@@ -150,6 +150,12 @@ class AdminController extends BaseController {
         if ($credentials) return Redirect::to('admin/announcement');
 
         return Redirect::back()->with('message', 'Sorry, only the administrator allowed here');
+    }
+
+    public function login()
+    {
+        $title = 'Login Page';
+        return View::make('admin.login', compact('title'));
     }
 
     public function logout()

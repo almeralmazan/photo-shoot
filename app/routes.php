@@ -2,7 +2,7 @@
 
 // Public Pages
 Route::get('/', 'HomeController@index');
-Route::get('login', 'HomeController@login');
+Route::get('login', 'AdminController@login');
 Route::post('login', 'AdminController@verifyLogin');
 Route::get('service/{serviceId}', 'HomeController@service');
 Route::get('reserve/{serviePackageId}', 'HomeController@reserve');
@@ -17,7 +17,7 @@ Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
     Route::get('reservation/{reservationId}', 'AdminController@reserveId');
     Route::post('update/reservation/{customerId}', 'AdminController@updateReservation');
 
-    Route::get('announcement', 'AdminController@announcement');
+    Route::get('/', 'AdminController@index');
     Route::post('update/announcement/{announcementId}', 'AdminController@updateAnnouncement');
 
     // Services
