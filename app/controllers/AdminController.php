@@ -2,6 +2,19 @@
 
 class AdminController extends BaseController {
 
+    public function index()
+    {
+        $title = 'Admin Page';
+        return View::make('admin.index', compact('title'));
+    }
+
+    public function announcement()
+    {
+        $title = 'Announcement Page';
+        $announcement = Announcement::find(1);
+        return View::make('admin.announcement', compact('title', 'announcement'));
+    }
+
     public function reservation()
     {
         $title = 'Reservation Page';
@@ -17,36 +30,54 @@ class AdminController extends BaseController {
         return View::make('admin.customer-reservation', compact('title', 'customer', 'package'));
     }
 
-    public function updateReservation($customerId)
+    public function updateReservation($reservationId)
     {
-        $customer = Reservation::find($customerId);
-        $customer->status_id = Input::get('status');
-        $customer->save();
+        DB::table('reservations')
+            ->where('reservations.id', '=', $reservationId)
+            ->update([
+                'status_id' => Input::get('status')
+            ]);
 
         return Redirect::back();
-    }
-
-    public function announcement()
-    {
-        $title = 'Announcement Page';
-        $announcement = Announcement::find(1);
-        return View::make('admin.announcement', compact('title', 'announcement'));
     }
 
     public function updateAnnouncement($announcementId)
     {
-        $announcement = Announcement::find($announcementId);
-        $announcement->title = Input::get('title');
-        $announcement->content = Input::get('content');
-        $announcement->save();
+        DB::table('announcements')
+            ->where('announcements.id', '=', $announcementId)
+            ->update([
+                'title'     =>  Input::get('title'),
+                'content'   =>  Input::get('content')
+            ]);
 
         return Redirect::back();
     }
 
-    public function serviceEvent()
+    public function services()
     {
-        $title = 'Event Package';
-        return View::make('admin.services.event', compact('title'));
+        $title = 'Services';
+        $services = Service::all();
+        return View::make('admin.services.index', compact('title', 'services'));
+    }
+
+    public function addService()
+    {
+        Service::create([
+            'name'  =>  Input::get('service_name'),
+            'image' =>  Input::file('service_image')
+        ]);
+    }
+
+    public function servicePackage($serviceId)
+    {
+        $service = Service::find($serviceId);
+        $title = $service->name;
+
+        $servicePackages = DB::table('service_packages')
+                            ->where('service_id', '=', $serviceId)
+                            ->get();
+
+        return View::make('admin.services.service-package', compact('title', 'servicePackages'));
     }
 
     public function servicePhotoShoot()
@@ -83,9 +114,9 @@ class AdminController extends BaseController {
 
     public function addGallery()
     {
-        $gallery = new Gallery;
-        $gallery->name = Input::get('gallery_name');
-        $gallery->save();
+        Gallery::create([
+            'name' => Input::get('gallery_name')
+        ]);
 
         return Redirect::back();
     }
@@ -95,10 +126,10 @@ class AdminController extends BaseController {
         $image = Input::file('image_name');
         $filename = $image->getClientOriginalName();
 
-        $galleryImage = new GalleryImage;
-        $galleryImage->gallery_id = Input::get('gallery_id');
-        $galleryImage->image = $filename;
-        $galleryImage->save();
+        GalleryImage::create([
+            'gallery_id'    =>  Input::get('gallery_id'),
+            'image'         =>  $filename
+        ]);
 
         $destinationPath = public_path() . '/images/uploads/galleries';
         $image->move($destinationPath, $filename);
@@ -122,9 +153,15 @@ class AdminController extends BaseController {
             'password' => Input::get('password')
         ]);
 
-        if ($credentials) return Redirect::to('admin/announcement');
+        if ($credentials) return Redirect::to('admin');
 
-        return Redirect::back()->withMessage('Sorry, only the administrator allowed here');
+        return Redirect::back()->with('message', 'Sorry, only the administrator allowed here');
+    }
+
+    public function login()
+    {
+        $title = 'Login Page';
+        return View::make('admin.login', compact('title'));
     }
 
     public function logout()
