@@ -17,11 +17,13 @@ class AdminController extends BaseController {
         return View::make('admin.customer-reservation', compact('title', 'customer', 'package'));
     }
 
-    public function updateReservation($customerId)
+    public function updateReservation($reservationId)
     {
-        $customer = Reservation::find($customerId);
-        $customer->status_id = Input::get('status');
-        $customer->save();
+        DB::table('reservations')
+            ->where('reservations.id', '=', $reservationId)
+            ->update([
+                'status_id' => Input::get('status')
+            ]);
 
         return Redirect::back();
     }
@@ -35,10 +37,12 @@ class AdminController extends BaseController {
 
     public function updateAnnouncement($announcementId)
     {
-        $announcement = Announcement::find($announcementId);
-        $announcement->title = Input::get('title');
-        $announcement->content = Input::get('content');
-        $announcement->save();
+        DB::table('announcements')
+            ->where('announcements.id', '=', $announcementId)
+            ->update([
+                'title'     =>  Input::get('title'),
+                'content'   =>  Input::get('content')
+            ]);
 
         return Redirect::back();
     }
@@ -50,12 +54,12 @@ class AdminController extends BaseController {
         return View::make('admin.services.index', compact('title', 'services'));
     }
 
-    public function addservice()
+    public function addService()
     {
-        $newService = new Service;
-        $newService->name = Input::get('service_name');
-        $newService->image = Input::file('service_image');
-        $newService->save();
+        Service::create([
+            'name'  =>  Input::get('service_name'),
+            'image' =>  Input::file('service_image')
+        ]);
     }
 
     public function servicePackage($serviceId)
@@ -63,7 +67,9 @@ class AdminController extends BaseController {
         $service = Service::find($serviceId);
         $title = $service->name;
 
-        $servicePackages = ServicePackage::where('service_id', $service->id)->get();
+        $servicePackages = DB::table('service_packages')
+                            ->where('service_id', '=', $serviceId)
+                            ->get();
 
         return View::make('admin.services.service-package', compact('title', 'servicePackages'));
     }
@@ -102,9 +108,9 @@ class AdminController extends BaseController {
 
     public function addGallery()
     {
-        $gallery = new Gallery;
-        $gallery->name = Input::get('gallery_name');
-        $gallery->save();
+        Gallery::create([
+            'name' => Input::get('gallery_name')
+        ]);
 
         return Redirect::back();
     }
@@ -114,10 +120,10 @@ class AdminController extends BaseController {
         $image = Input::file('image_name');
         $filename = $image->getClientOriginalName();
 
-        $galleryImage = new GalleryImage;
-        $galleryImage->gallery_id = Input::get('gallery_id');
-        $galleryImage->image = $filename;
-        $galleryImage->save();
+        GalleryImage::create([
+            'gallery_id'    =>  Input::get('gallery_id'),
+            'image'         =>  $filename
+        ]);
 
         $destinationPath = public_path() . '/images/uploads/galleries';
         $image->move($destinationPath, $filename);
@@ -143,7 +149,7 @@ class AdminController extends BaseController {
 
         if ($credentials) return Redirect::to('admin/announcement');
 
-        return Redirect::back()->withMessage('Sorry, only the administrator allowed here');
+        return Redirect::back()->with('message', 'Sorry, only the administrator allowed here');
     }
 
     public function logout()
