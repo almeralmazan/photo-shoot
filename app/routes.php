@@ -18,6 +18,7 @@ Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
     Route::post('update/reservation/{customerId}', 'AdminController@updateReservation');
 
     Route::get('/', 'AdminController@index');
+    Route::get('announcement', 'AdminController@announcement');
     Route::post('update/announcement/{announcementId}', 'AdminController@updateAnnouncement');
 
     // Services

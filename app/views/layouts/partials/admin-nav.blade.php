@@ -34,37 +34,39 @@
                 <ul class="nav" id="side-menu">
 
                 @if (Auth::user()->username == 'admin')
+
                     <li>
-                        <a href="index.html">
-                            <i class="fa fa-dashboard fa-fw"></i> Dashboard
+                        <a class="{{ set_active('admin/reservation') }}" href="{{ URL::to('admin/reservation') }}">
+                            <i class="glyphicon glyphicon-list-alt"></i> Reservation
                         </a>
                     </li>
 
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reservation</a>
+                        <a class="{{ set_active('admin/announcement') }}" href="{{ URL::to('admin/announcement') }}">
+                            <i class="glyphicon glyphicon-comment"></i> Announcement
+                        </a>
                     </li>
 
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Announcement</a>
+                        <a class="{{ set_active('admin/services') }}" href="{{ URL::to('admin/services') }}">
+                            <i class="glyphicon glyphicon-wrench"></i> Services
+                        </a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Services<span
-                                class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Item</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a class="{{ set_active('admin/gallery') }}" href="{{ URL::to('admin/gallery') }}">
+                            <i class="glyphicon glyphicon-picture"></i> Gallery
+                        </a>
                     </li>
 
+                @else
+
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Gallery</a>
+                        <a class="{{ set_active('admin/reservation') }}" href="{{ URL::to('admin/reservation') }}">
+                            <i class="glyphicon glyphicon-list-alt"></i> Reservation
+                        </a>
                     </li>
+
                 @endif
 
                 </ul>
