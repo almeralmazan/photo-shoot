@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ URL::to('admin') }}">Printshoppe Admin</a>
+            <a class="navbar-brand" href="{{ URL::to('admin') }}">Printshoppe Dashboard</a>
         </div>
         <!-- /.navbar-header -->
 
