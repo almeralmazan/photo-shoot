@@ -11,8 +11,17 @@ class AdminController extends BaseController {
     public function announcement()
     {
         $title = 'Announcement Page';
-        $announcement = Announcement::find(1);
-        return View::make('admin.announcement', compact('title', 'announcement'));
+//        $announcement = Announcement::find(1);
+        $announcements = Announcement::all();
+        return View::make('admin.announcement', compact('title', 'announcements'));
+    }
+
+    public function singleAnnouncement($announcementId)
+    {
+        $announcement = Announcement::find($announcementId);
+        $title = $announcement->title;
+
+        return View::make('admin.single-announcement', compact('title', 'announcement'));
     }
 
     public function reservation()

@@ -19,6 +19,7 @@ Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
 
     Route::get('/', 'AdminController@index');
     Route::get('announcement', 'AdminController@announcement');
+    Route::get('single-announcement/{announcementId}', 'AdminController@singleAnnouncement');
     Route::post('update/announcement/{announcementId}', 'AdminController@updateAnnouncement');
 
     // Services

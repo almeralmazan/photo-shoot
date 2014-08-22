@@ -3,21 +3,34 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <h3 class="page-header">Announcement</h3>
 
-        {{ Form::open(['url' => 'admin/update/announcement/1']) }}
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" name="title" value="{{ $announcement->title }}" class="form-control" id="title"
-                   placeholder="Enter title">
-        </div>
-        <div class="form-group">
-            <label for="content">Content</label>
-            <textarea name="content" class="form-control" rows="10">{{ $announcement->content }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-default">Update</button>
-        </form>
+        <h3 class="page-header">Announcements</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Announcement Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            @foreach ($announcements as $announcement)
+                <tr>
+                    <td>
+                        <a href="{{ URL::to('admin/single-announcement', [$announcement->id]) }}">{{ $announcement->title }}</a>
+                    </td>
+                    <td>
+                        {{ HTML::link('admin/delete/announcement/' . $announcement->id, 'delete', ['class' => 'btn btn-danger']) }}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
 
     </div>
 </div>
 @stop
+
+
+
