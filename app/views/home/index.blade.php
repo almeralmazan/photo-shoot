@@ -4,11 +4,11 @@
 
 <div class="services">
 
-    @include ('layouts.partials.home-slider')
+    @include ('home.partials.home-slider')
 
-    @include ('layouts.partials.home-our-services')
+    @include ('home.partials.home-our-services')
 
-    @include ('layouts.partials.news-announcement')
+    @include ('home.partials.news-announcement')
 
 </div>
 

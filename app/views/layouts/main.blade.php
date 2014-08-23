@@ -7,6 +7,8 @@
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/animate.css') }}
     {{ HTML::style('css/home-style.css') }}
+    {{ HTML::style('css/default.css') }}
+    {{ HTML::style('css/default.date.css') }}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

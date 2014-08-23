@@ -6,7 +6,8 @@ class HomeController extends BaseController {
     {
         $title = 'Home Page';
         $services = Service::all();
-        return View::make('home.index', compact('title', 'services'));
+        $announcements = Announcement::all();
+        return View::make('home.index', compact('title', 'services', 'announcements'));
     }
 
     public function service($serviceId)

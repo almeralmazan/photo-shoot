@@ -5,13 +5,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center">title here</h1>
+                <h1 class="text-center">{{ $package->name }}</h1>
             </div>
             <div class="col-md-8 col-md-offset-2">
                 <img src="http://placehold.it/250x250" alt="" class="img-responsive center-block">
-                <p class="text-center h4">Event Package 1</p>
-                <pre class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, reprehenderit, ullam. Voluptas magni hic consectetur dolorum ratione rem distinctio fuga perferendis, ipsa velit. Amet, laboriosam, odit sint nobis et assumenda.</pre>
-                <p class="text-center">P2,500</p>
+                <p class="text-center h4">{{ $package->name }}</p>
+                <pre class="text-center">{{ $package->details }}</pre>
+                <p class="text-center">P{{ $package->price }}</p>
             </div>
         </div>
         <div class="row margin-top-sm">
