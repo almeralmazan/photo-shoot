@@ -3,18 +3,27 @@
 @section('content')
 <section class="services-offered">
     <div class="container">
+
         <div class="row">
-            @foreach ($packages as $package)
-            <div class="col-md-8">
-                <h4>{{ $package->name }}</h4>
-                <p>&#x20b1; {{ $package->price }}</p>
-                <p>{{ $package->details }}</p>
-                <a href="{{ URL::to('reserve', [$package->id]) }}" class="btn btn-primary">Reserve</a>
+            <div class="col-md-12">
+                <h1 class="text-center">{{ $title }}</h1>
             </div>
-            <div class="col-md-4 img-container">
-                <img src="{{ URL::to('images/uploads/services/packages', [$package->image]) }}" alt="" class="center-block">
+        </div>
+
+        <div class="row">
+
+            @foreach ($packages as $package)
+            <div class="col-sm-4 col-md-4">
+                <div class="thumbnails center-block">
+                    <img src="{{ URL::to('images/uploads/services/packages', [$package->image]) }}" alt="" class="center-block">
+                    <div class="caption">
+                        <h4>{{ $package->name }}</h4>
+                        <a href="{{ URL::to('reserve', [$package->id]) }}" class="btn btn-sm btn-link">Reserve</a>
+                    </div>
+                </div>
             </div>
             @endforeach
+
         </div>
     </div>
 </section>

@@ -1,10 +1,28 @@
 <?php
 
+// Global variable
+App::singleton('services', function($servicePackages)
+{
+    $services = '';
+
+    foreach ($servicePackages as $service)
+    {
+        $services .= "<li><a href='services/" . $service->id . "'>" . $service->name . '</a></li>';
+    }
+
+    return $services;
+});
+
 // Public Pages
 Route::get('/', 'HomeController@index');
 Route::get('login', 'AdminController@login');
 Route::post('login', 'AdminController@verifyLogin');
-Route::get('service/{serviceId}', 'HomeController@service');
+Route::get('services/{serviceId}', 'HomeController@service');
+
+Route::get('event', 'HomeController@event');
+Route::get('photo-shoot', 'HomeController@photoShoot');
+Route::get('products', 'HomeController@products');
+
 Route::get('reserve/{serviePackageId}', 'HomeController@reserve');
 Route::post('reserve-package', 'HomeController@reservePackage');
 Route::get('galleries', 'HomeController@galleries');
