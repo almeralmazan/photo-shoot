@@ -31,7 +31,7 @@
             @foreach ($servicePackages as $package)
             <tr>
                 <td>{{ $package->name }}</td>
-                <td>{{ HTML::link('admin/service-package/' . $package->id, 'View Details', ['class' => 'btn btn-info'])
+                <td>{{ HTML::link('admin/service-package/' . $package->id . '/service-id/' . $service->id, 'View Details', ['class' => 'btn btn-info'])
                     }}
                 </td>
                 <td>{{ HTML::link('admin/delete/service-package/' . $package->id, 'delete', ['class' => 'btn

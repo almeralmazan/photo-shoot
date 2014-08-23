@@ -1,10 +1,28 @@
 <?php
 
+// Global variable
+App::singleton('services', function($servicePackages)
+{
+    $services = '';
+
+    foreach ($servicePackages as $service)
+    {
+        $services .= "<li><a href='services/" . $service->id . "'>" . $service->name . '</a></li>';
+    }
+
+    return $services;
+});
+
 // Public Pages
 Route::get('/', 'HomeController@index');
 Route::get('login', 'AdminController@login');
 Route::post('login', 'AdminController@verifyLogin');
-Route::get('service/{serviceId}', 'HomeController@service');
+Route::get('services/{serviceId}', 'HomeController@service');
+
+Route::get('event', 'HomeController@event');
+Route::get('photo-shoot', 'HomeController@photoShoot');
+Route::get('products', 'HomeController@products');
+
 Route::get('reserve/{serviePackageId}', 'HomeController@reserve');
 Route::post('reserve-package', 'HomeController@reservePackage');
 Route::get('galleries', 'HomeController@galleries');
@@ -19,11 +37,13 @@ Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
 
     Route::get('/', 'AdminController@index');
     Route::get('announcement', 'AdminController@announcement');
+    Route::get('single-announcement/{announcementId}', 'AdminController@singleAnnouncement');
     Route::post('update/announcement/{announcementId}', 'AdminController@updateAnnouncement');
 
     // Services
     Route::get('services', 'AdminController@services');
     Route::get('service-package/{packageId}', 'AdminController@servicePackage');
+    Route::get('service-package/{packageId}/service-id/{serviceId}', 'AdminController@getIdAndServiceId');
     Route::post('add/service', 'AdminController@addService');
     Route::get('event', 'AdminController@serviceEvent');
     Route::get('photo-shoot', 'AdminController@servicePhotoShoot');

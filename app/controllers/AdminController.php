@@ -11,8 +11,17 @@ class AdminController extends BaseController {
     public function announcement()
     {
         $title = 'Announcement Page';
-        $announcement = Announcement::find(1);
-        return View::make('admin.announcement', compact('title', 'announcement'));
+//        $announcement = Announcement::find(1);
+        $announcements = Announcement::all();
+        return View::make('admin.announcement', compact('title', 'announcements'));
+    }
+
+    public function singleAnnouncement($announcementId)
+    {
+        $announcement = Announcement::find($announcementId);
+        $title = $announcement->title;
+
+        return View::make('admin.single-announcement', compact('title', 'announcement'));
     }
 
     public function reservation()
@@ -77,19 +86,18 @@ class AdminController extends BaseController {
                             ->where('service_id', '=', $serviceId)
                             ->get();
 
-        return View::make('admin.services.service-package', compact('title', 'servicePackages'));
+        return View::make('admin.services.service-package', compact('title', 'service', 'servicePackages'));
     }
 
-    public function servicePhotoShoot()
+    public function getIdAndServiceId($servicePackageId, $serviceId)
     {
-        $title = 'Photo Shoot Package';
-        return View::make('admin.services.photo-shoot', compact('title'));
-    }
+        $title = 'Yahoo';
+        $package = DB::table('service_packages')
+                    ->where('service_packages.id', '=', $servicePackageId)
+                    ->where('service_packages.service_id', '=', $serviceId)
+                    ->first();
 
-    public function serviceProduct()
-    {
-        $title = 'Products Package';
-        return View::make('admin.services.products', compact('title'));
+        return View::make('admin.services.service-package-details', compact('title', 'package'));
     }
 
     public function gallery()
