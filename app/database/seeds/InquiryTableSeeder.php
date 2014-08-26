@@ -8,14 +8,16 @@ class InquiryTableSeeder extends Seeder {
 
         $inquiries = [
             [
-                'name'      =>  'Almer Almazan',
-                'email'     =>  'almerboy@gmail.com',
-                'message'   =>  'The big brown fox jumps over the lazy dog'
+                'name'              =>  'Almer Almazan',
+                'email'             =>  'almerboy@gmail.com',
+                'contact_number'    =>  '09159115188',
+                'message'           =>  'The big brown fox jumps over the lazy dog'
             ],
             [
-                'name'      =>  'John Doe',
-                'email'     =>  'johndoe@gmail.com',
-                'message'   =>  'Foo bar baz'
+                'name'              =>  'John Doe',
+                'email'             =>  'johndoe@gmail.com',
+                'contact_number'    =>  '09236923431',
+                'message'           =>  'Foo bar baz'
             ]
         ];
 

@@ -17,6 +17,7 @@ class CreateInquiriesTable extends Migration {
             $table->increments('id');
             $table->string('name', 50);
             $table->string('email', 100);
+            $table->string('contact_number', 11);
             $table->text('message');
             $table->timestamps();
         });

@@ -2,5 +2,5 @@
 
 class Inquiry extends Eloquent {
 
-    protected $fillable = ['name', 'email', 'message'];
+    protected $fillable = ['name', 'email', 'contact_number', 'message'];
 }
