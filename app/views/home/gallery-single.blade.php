@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 margin-top-sm">
-                <a href="gallery.html" class="btn btn-link">
-                    <img src="img/back.png" alt="">
+                <a href="{{ URL::to('galleries') }}" class="btn btn-link">
+                    <img src="{{ URL::to('images/back.png') }}" alt="">
                     back to gallery
                 </a>
             </div>
@@ -17,41 +17,15 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="list-inline text-center">
+                    @foreach ($galleryImages as $gallery)
                     <li>
                         <div class="thumbnails">
-                            <a href="http://placehold.it/250x250" data-lightbox="gallery" data-title="My caption">
-                                <img src="http://placehold.it/250x250" alt="">
+                            <a href="{{ URL::to('images/uploads/galleries/gallery_images', [$gallery->image]) }}" data-lightbox="gallery" data-title="{{ $gallery->image }}">
+                                <img src="{{ URL::to('images/uploads/galleries/gallery_images', [$gallery->image]) }}" alt="">
                             </a>
                         </div>
                     </li>
-                    <li>
-                        <div class="thumbnails">
-                            <a href="http://placehold.it/250x250" data-lightbox="gallery" data-title="My caption">
-                                <img src="http://placehold.it/250x250" alt="">
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="thumbnails">
-                            <a href="http://placehold.it/250x250" data-lightbox="gallery" data-title="My caption">
-                                <img src="http://placehold.it/250x250" alt="">
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="thumbnails">
-                            <a href="http://placehold.it/250x250" data-lightbox="gallery" data-title="My caption">
-                                <img src="http://placehold.it/250x250" alt="">
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="thumbnails">
-                            <a href="http://placehold.it/250x250" data-lightbox="gallery" data-title="My caption">
-                                <img src="http://placehold.it/250x250" alt="">
-                            </a>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

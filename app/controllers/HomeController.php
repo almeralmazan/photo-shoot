@@ -90,7 +90,15 @@ class HomeController extends BaseController {
     public function galleries()
     {
         $title = 'Galleries Page';
-        return View::make('home.galleries', compact('title'));
+        $galleries = Gallery::all();
+        return View::make('home.galleries', compact('title', 'galleries'));
+    }
+
+    public function gallerySingle($galleryId)
+    {
+        $title = 'Gallery Image';
+        $galleryImages = GalleryImage::where('gallery_id', $galleryId)->get();
+        return View::make('home.gallery-single', compact('title', 'galleryImages'));
     }
 
     public function aboutUs()

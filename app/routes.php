@@ -13,6 +13,7 @@ Route::get('products', 'HomeController@products');
 Route::get('reserve/{serviePackageId}', 'HomeController@reserve');
 Route::post('reserve-package', 'HomeController@reservePackage');
 Route::get('galleries', 'HomeController@galleries');
+Route::get('gallery-single/{galleryId}', 'HomeController@gallerySingle');
 Route::get('about-us', 'HomeController@aboutUs');
 Route::get('contact', 'HomeController@contact');
 

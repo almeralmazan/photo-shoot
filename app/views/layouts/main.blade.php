@@ -6,6 +6,7 @@
     <!-- Bootstrap -->
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/animate.css') }}
+    {{ HTML::style('css/lightbox.css') }}
     {{ HTML::style('css/home-style.css') }}
     {{ HTML::style('css/default.css') }}
     {{ HTML::style('css/default.date.css') }}
@@ -31,6 +32,7 @@
 
 {{ HTML::script('js/jquery-1.11.0.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
+{{ HTML::script('js/lightbox.min.js') }}
 {{ HTML::script('js/picker.js') }}
 {{ HTML::script('js/picker.date.js') }}
 {{ HTML::script('js/script.js') }}
