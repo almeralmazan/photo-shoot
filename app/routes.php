@@ -1,18 +1,5 @@
 <?php
 
-// Global variable
-App::singleton('services', function($servicePackages)
-{
-    $services = '';
-
-    foreach ($servicePackages as $service)
-    {
-        $services .= "<li><a href='services/" . $service->id . "'>" . $service->name . '</a></li>';
-    }
-
-    return $services;
-});
-
 // Public Pages
 Route::get('/', 'HomeController@index');
 Route::get('login', 'AdminController@login');
