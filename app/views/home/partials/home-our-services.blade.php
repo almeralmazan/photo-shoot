@@ -12,7 +12,7 @@
             @foreach ($services as $service)
             <div class="col-sm-4 col-md-4">
                 <div class="thumbnails center-block animated rollIn">
-                    <img src="http://placehold.it/250x250" alt="">
+                    <img src="{{ URL::to('images/uploads/services', [$service->image]) }}" alt="">
                     <div class="caption">
                         <h3>{{ $service->name }}</h3>
                         <a href="{{ URL::to('services', [$service->id]) }}">

@@ -54,18 +54,23 @@ class HomeController extends BaseController {
     {
         $title = 'Packages';
         $package = ServicePackage::find($servicePackageId);
+
+        Session::put('package_id', $package->service_id);
+
         return View::make('home.reserve', compact('title', 'package'));
     }
 
     public function reservePackage()
     {
-        $packageId      = Input::get('package_id');
-        $name           = Input::get('name');
-        $email          = Input::get('email');
-        $contactNumber  = Input::get('contact_number');
-        $date           = Input::get('date');
-        $message        = Input::get('message');
-        $statusId       = 1;
+        $reservationDate = new \Carbon\Carbon(Input::get('date'));
+
+        $packageId      =   Session::get('package_id');
+        $name           =   Input::get('name');
+        $email          =   Input::get('email');
+        $contactNumber  =   Input::get('contact_number');
+        $date           =   $reservationDate->toDateString();
+        $message        =   Input::get('message');
+        $statusId       =   1;
 
         Reservation::create([
             'name'              =>  $name,
