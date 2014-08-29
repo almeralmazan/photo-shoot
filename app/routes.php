@@ -17,6 +17,21 @@ Route::get('gallery-single/{galleryId}', 'HomeController@gallerySingle');
 Route::get('about-us', 'HomeController@aboutUs');
 Route::get('contact', 'HomeController@contact');
 
+/*
+ * All announcements
+ */
+Route::get('announcements', 'HomeController@announcements');
+
+/*
+ * Single announcement
+ */
+Route::get('announcement-single/{announcementId}', 'HomeController@singleAnnouncement');
+
+/*
+ * Save Inquiry information to database
+ */
+Route::post('save-inquiry', 'HomeController@saveInquiry');
+
 Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
 {
     Route::get('reservation', 'AdminController@reservation');

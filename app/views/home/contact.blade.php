@@ -15,25 +15,33 @@
                     <li><span class="glyphicon glyphicon-earphone"></span> Contact no: (002)-678-123</li>
                     <li><span class="glyphicon glyphicon-envelope"></span> Email: printshoppe@gmail.com</li>
                 </ul>
-                <form action="" class="form-horizontal">
+
+                {{ Form::open(['url' => 'save-inquiry', 'class' => 'form-horizontal']) }}
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name">
+                        <input type="text" name="name" class="form-control" placeholder="Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Contact #">
+                        <input type="tel"
+                               name="contact_number"
+                               class="form-control"
+                               placeholder="Contact # (format: 09XXXXXXXXX)"
+                               pattern="^[(09)\d]{11}$"
+                               title="Format: 09159115188 (11 numbers)"
+                               required>
                     </div>
                     <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="Your message"></textarea>
+                        <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Your message"></textarea>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-default">
+                        <button type="submit" class="btn btn-default">
                             Submit
                         </button>
                     </div>
-                </form>
+                {{ Form::close() }}
+
             </div>
         </div>
     </div>

@@ -114,4 +114,29 @@ class HomeController extends BaseController {
         return View::make('home.contact', compact('title'));
     }
 
+    public function saveInquiry()
+    {
+        Inquiry::create([
+            'name'              =>  Input::get('name'),
+            'email'             =>  Input::get('email'),
+            'contact_number'    =>  Input::get('contact_number'),
+            'message'           =>  Input::get('message')
+        ]);
+
+        return Redirect::back()->withMessage('Created Successfully!');
+    }
+
+    public function announcements()
+    {
+        $title = 'Announcements Page';
+        $announcements = Announcement::all();
+        return View::make('home.announcements-all', compact('title', 'announcements'));
+    }
+
+    public function singleAnnouncement($announcementId)
+    {
+        $title = 'Single Announcement Page';
+        $announcement = Announcement::find($announcementId);
+        return View::make('home.announcement-single', compact('title', 'announcement'));
+    }
 }
