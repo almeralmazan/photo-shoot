@@ -1,18 +1,5 @@
 <?php
 
-// Global variable
-App::singleton('services', function($servicePackages)
-{
-    $services = '';
-
-    foreach ($servicePackages as $service)
-    {
-        $services .= "<li><a href='services/" . $service->id . "'>" . $service->name . '</a></li>';
-    }
-
-    return $services;
-});
-
 // Public Pages
 Route::get('/', 'HomeController@index');
 Route::get('login', 'AdminController@login');
@@ -26,8 +13,24 @@ Route::get('products', 'HomeController@products');
 Route::get('reserve/{serviePackageId}', 'HomeController@reserve');
 Route::post('reserve-package', 'HomeController@reservePackage');
 Route::get('galleries', 'HomeController@galleries');
+Route::get('gallery-single/{galleryId}', 'HomeController@gallerySingle');
 Route::get('about-us', 'HomeController@aboutUs');
 Route::get('contact', 'HomeController@contact');
+
+/*
+ * All announcements
+ */
+Route::get('announcements', 'HomeController@announcements');
+
+/*
+ * Single announcement
+ */
+Route::get('announcement-single/{announcementId}', 'HomeController@singleAnnouncement');
+
+/*
+ * Save Inquiry information to database
+ */
+Route::post('save-inquiry', 'HomeController@saveInquiry');
 
 Route::group(['before' => 'auth', 'prefix' => 'admin'], function()
 {

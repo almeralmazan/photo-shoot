@@ -54,18 +54,23 @@ class HomeController extends BaseController {
     {
         $title = 'Packages';
         $package = ServicePackage::find($servicePackageId);
+
+        Session::put('package_id', $package->service_id);
+
         return View::make('home.reserve', compact('title', 'package'));
     }
 
     public function reservePackage()
     {
-        $packageId      = Input::get('package_id');
-        $name           = Input::get('name');
-        $email          = Input::get('email');
-        $contactNumber  = Input::get('contact_number');
-        $date           = Input::get('date');
-        $message        = Input::get('message');
-        $statusId       = 1;
+        $reservationDate = new \Carbon\Carbon(Input::get('date'));
+
+        $packageId      =   Session::get('package_id');
+        $name           =   Input::get('name');
+        $email          =   Input::get('email');
+        $contactNumber  =   Input::get('contact_number');
+        $date           =   $reservationDate->toDateString();
+        $message        =   Input::get('message');
+        $statusId       =   1;
 
         Reservation::create([
             'name'              =>  $name,
@@ -90,7 +95,15 @@ class HomeController extends BaseController {
     public function galleries()
     {
         $title = 'Galleries Page';
-        return View::make('home.galleries', compact('title'));
+        $galleries = Gallery::all();
+        return View::make('home.galleries', compact('title', 'galleries'));
+    }
+
+    public function gallerySingle($galleryId)
+    {
+        $title = 'Gallery Image';
+        $galleryImages = GalleryImage::where('gallery_id', $galleryId)->get();
+        return View::make('home.gallery-single', compact('title', 'galleryImages'));
     }
 
     public function aboutUs()
@@ -106,4 +119,29 @@ class HomeController extends BaseController {
         return View::make('home.contact', compact('title'));
     }
 
+    public function saveInquiry()
+    {
+        Inquiry::create([
+            'name'              =>  Input::get('name'),
+            'email'             =>  Input::get('email'),
+            'contact_number'    =>  Input::get('contact_number'),
+            'message'           =>  Input::get('message')
+        ]);
+
+        return Redirect::back()->withMessage('Created Successfully!');
+    }
+
+    public function announcements()
+    {
+        $title = 'Announcements Page';
+        $announcements = Announcement::all();
+        return View::make('home.announcements-all', compact('title', 'announcements'));
+    }
+
+    public function singleAnnouncement($announcementId)
+    {
+        $title = 'Single Announcement Page';
+        $announcement = Announcement::find($announcementId);
+        return View::make('home.announcement-single', compact('title', 'announcement'));
+    }
 }

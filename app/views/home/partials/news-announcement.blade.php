@@ -13,7 +13,7 @@
             <div class="col-sm-4 col-md-4">
                 <h3>{{ $news->title }}</h3>
                 <p>{{ Str::limit($news->content, 200, '...') }}</p>
-                <button class="btn btn-link">Read more</button>
+                <a href="{{ URL::to('announcement-single', [$news->id]) }}" class="btn btn-link">Read more</a>
             </div>
             @endforeach
             
